@@ -115,6 +115,13 @@
         }
     });
 
+    //Mostrar detalles adicionales
+    detailsBtn.addEventListener('click', function(){
+        moreDatails.classList.toggle('hidden');
+        this.textContent = moreDatails.classList.contains('hidden') ?
+            'Ver mas detalles' : 'Ocultar detalles';
+    })
+
     // Funcion para consumir la API
     async function pokeApi(param) {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${param}`);
@@ -142,6 +149,11 @@
         // Estadisticas
         pokemonStats.innerHTML = pokemon.stats.map(stat => 
             `<li>${stat.stat.name}: ${stat.base_stat}</li>`
+        ).join('');
+
+        //Habilidades
+        pokemonAbilities.innerHTML = pokemon.abilities.map(ability => 
+            `<li> ${ability.ability.name.replace('-', ' ')} ${ability.is_hidden ? ' (oculta)' : ''}</li>`
         ).join('');
     }
     </script>

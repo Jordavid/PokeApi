@@ -88,7 +88,7 @@
     //Funcion para buscar pokemon
     searchBtn.addEventListener('click', async function() {
         let param;
-        const searchType = document.querySelector('input[name="searchType"]').value;
+        const searchType = document.querySelector('input[name="searchType"]:checked').value;
 
         if(searchType === 'random'){
             param = Math.floor(Math.random() * 150) + 1;
